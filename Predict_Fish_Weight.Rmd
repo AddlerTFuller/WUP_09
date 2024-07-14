@@ -77,12 +77,31 @@ subsets(regsubsets.out,statistic="adjr2",legend="bottom",main="Adjusted R^2")
 Now using the chart above, we have analysis the data gather that the two best regression mdel are height and weight.
 
 ## Pike
-
+```{r}
+fullup <- lm(Weight~ .,data=Pike)
+summary.lm(fullup)
+```
 
 ### Best Models
-
+This data shows that the best models are L-1, L-2, L-3, factor of height and weight> The P-vaule of this chart is 8.679e-10.
 
 ### Best Two regressor model
+```{r}
+library(leaps)
+regsubsets.out <-
+    regsubsets(Weight ~ .,
+               data = Pike,
+               nbest = 1,       # 1 best model for each number of predictors
+               nvmax = NULL,    # NULL for no limit on number of variables
+               force.in = NULL, force.out = NULL,
+               method = "exhaustive")
+
+summary.out <- summary(regsubsets.out)
+as.data.frame(summary.out$outmat)
+library(car)
+subsets(regsubsets.out,statistic="adjr2",legend="bottomright",main="Adjusted R^2")
+```
+They given us the two best element of the data are L-1, L-3W.
 
 
 ## Roach
