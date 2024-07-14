@@ -74,7 +74,9 @@ as.data.frame(summary.out$outmat)
 library(car)
 subsets(regsubsets.out,statistic="adjr2",legend="bottom",main="Adjusted R^2")
 ```
-Now using the chart above, we have analysis the data gather that the two best regression mdel are height and weight.
+
+
+Now using the chart above, we have analysis the data gather that the two best regression mdel are height and width.
 
 ## Pike
 ```{r}
@@ -101,16 +103,43 @@ as.data.frame(summary.out$outmat)
 library(car)
 subsets(regsubsets.out,statistic="adjr2",legend="bottomright",main="Adjusted R^2")
 ```
+
+
 They given us the two best element of the data are L-1, L-3W.
 
 
 ## Roach
 
+```{r}
+fullup <- lm(Weight~ .,data=Roach)
+summary.lm(fullup)
+```
 
 ### Best Models
-
+The best model that it shown is L-3 being Width instead of Weight. The P-value is 1.028e-05
 
 ### Best Two regressor model
+
+```{r}
+library(leaps)
+regsubsets.out <-
+    regsubsets(Weight ~ .,
+               data = Roach,
+               nbest = 1,       # 1 best model for each number of predictors
+               nvmax = NULL,    # NULL for no limit on number of variables
+               force.in = NULL, force.out = NULL,
+               method = "exhaustive")
+
+summary.out <- summary(regsubsets.out)
+as.data.frame(summary.out$outmat)
+library(car)
+subsets(regsubsets.out,statistic="adjr2",legend="bottomright",main="Adjusted R^2")
+```
+
+
+The best regression summary would be L-3 and Width.
+
+
 
 
 ## Final Summary Statements
