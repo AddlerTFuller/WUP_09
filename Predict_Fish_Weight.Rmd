@@ -76,7 +76,7 @@ subsets(regsubsets.out,statistic="adjr2",legend="bottom",main="Adjusted R^2")
 ```
 
 
-Now using the chart above, we have analysis the data gather that the two best regression mdel are height and width.
+Now using the chart above, we have analysis the data gather that the two best regression model are height and width.
 
 ## Pike
 ```{r}
@@ -144,3 +144,4 @@ The best regression summary would be L-3 and Width.
 
 ## Final Summary Statements
 
+After reviewing all the data we have gather from Porch, Pike, and roach, from using a leap program to figure out whats the best regression model, leaps helped us display all the data like for explain adjusted R-squared was for us to compare width or weight to see what impact it and the outcome of the data for it. 
